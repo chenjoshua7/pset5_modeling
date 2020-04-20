@@ -7,24 +7,24 @@ output:
 ##### Joshua Chen
 
 
-### Stock Market Investment Decisions
+### Question 3 Stock Market Investment Decisions
 
 ##### Question 1
 
 As seen in the graphs below, only stock X shows oscillatory behavior. However, stock X's oscilatory behavior is finite as it converges.
 ```{r, out.width = "350px", echo = FALSE}
-knitr::include_graphics("/Users/joshuachen/pset5_modeling/stockx.png")
+knitr::include_graphics("/Users/joshuachen/pset5_modeling/question3/stockx.png")
 ```
 ```{r, out.width = "350px", echo = FALSE}
-knitr::include_graphics("/Users/joshuachen/pset5_modeling/stocky.png")
+knitr::include_graphics("/Users/joshuachen/pset5_modeling/question3/stocky.png")
 ```
 
 ##### Question 2
 
 For stock X, the graph below show the $f(x) = \cfrac{10x}{1+x^2}$ and $g(x) = x$
 
-```{r, out.width = "450px", echo = FALSE}
-knitr::include_graphics("/Users/joshuachen/pset5_modeling/xbrouwer.png")
+```{r, out.width = "300px", echo = FALSE}
+knitr::include_graphics("/Users/joshuachen/pset5_modeling/question3/xbrouwer.png")
 ```
 
 They clearly converge at $x = 3$ and this can easily be verifies.
@@ -32,8 +32,8 @@ $f(3) = \cfrac{10(3)}{1+3^2} = \cfrac{30}{10} = 3$ and $g(3) = 3$
 
 For stock Y, the graph below show the $f(y) = \cfrac{10y^2}{1+y^2}$ and $g(y) = y$
 
-```{r, out.width = "450px", echo = FALSE}
-knitr::include_graphics("/Users/joshuachen/pset5_modeling/ybrouwer.png")
+```{r, out.width = "300px", echo = FALSE}
+knitr::include_graphics("/Users/joshuachen/pset5_modeling/question3/ybrouwer.png")
 ```
 
 To find the point of intersection:
@@ -49,7 +49,8 @@ c <- 1
 
 Looking at the data:
 ```{r}
-data <- read.csv("stock_data.csv")
+library(readr)
+data <- read_csv("question3/stock_data.csv")
 data[69,"x"]
 data[7,"y"]
 ```
@@ -58,3 +59,23 @@ By Brouwer's Theorem, we can conclude that stock X converges to 3, starting from
 
 ##### Question 3:
 Over time, Y is the better better stock as stock Y converges to a higher price than stock X thought they start at the same price.
+
+### Question 4: Arms Race Model
+##### Part A)
+
+```{r message = FALSE}
+arms_data <- read_csv("question4/arms_data.csv")
+firstten <- head(arms_data, 10)
+max(firstten$`ut/st`)
+which.max(firstten$`ut/st`)
+```
+
+As seen above, in year 8, the ratio between country U's spending and country X's spending is maximized. This ratio is 3.337716.
+
+##### Part B)
+Country U wins the arms race in the long wrong in terms of spending.
+If we continue the chart, we see the ratio convergesto around 3.162278. Because the ratio is over 1, this means that country U will continually be spending more money than country S.
+
+```{r, out.width = "300px", echo = FALSE}
+knitr::include_graphics("/Users/joshuachen/pset5_modeling/question4/arms_graph.png")
+```
